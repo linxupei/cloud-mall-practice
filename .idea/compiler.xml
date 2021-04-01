@@ -9,12 +9,14 @@
         <module name="cloud-mall-user" />
         <module name="cloud-mall-common" />
         <module name="cloud-mall-zuul" />
+        <module name="cloud-mall-category-product" />
         <module name="cloud-mall-eureka-server" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cloud-mall-category-product" options="-parameters" />
       <module name="cloud-mall-common" options="-parameters" />
       <module name="cloud-mall-eureka-server" options="-parameters" />
       <module name="cloud-mall-user" options="-parameters" />

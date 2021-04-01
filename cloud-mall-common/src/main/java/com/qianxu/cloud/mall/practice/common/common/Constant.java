@@ -19,13 +19,6 @@ public class Constant {
 
     public static final String SALT = "1/da1@&^s7fy2.,,opfkgs[;";
 
-    public static String FILE_UPLOAD_DIR;
-
-//    @Value("${file.upload.dir}")
-//    public void setFileUploadDir(String fileUploadDir) {
-//        FILE_UPLOAD_DIR = fileUploadDir;
-//    }
-
     public interface ProductListOrderBy {
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price desc", "price asc");
     }

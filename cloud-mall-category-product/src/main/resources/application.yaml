@@ -10,7 +10,7 @@ spring:
     url: jdbc:mysql://47.111.14.150:3306/qianxu_mall?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&userSSL=false&serverTimezone=Asia/Shanghai
     username: root
   application:
-    name: cloud-mall-zuul
+    name: cloud-mall-category-product
   redis:
     database: 0
     host: 47.111.14.150
@@ -28,18 +28,9 @@ logging:
     console: '%clr(%d{${LOG_DATEFORMAT_PATTERN:HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:-}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:}){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
 
 server:
-  port: 8083
+  port: 8082
 
-zuul:
-  prefix: /
-  routes:
-    cloud-mall-user:
-      path: /user/**
-      service-id: cloud-mall-user
-    cloud-mall-category-product:
-      path: /category-product/**
-      service-id: cloud-mall-category-product
+file:
+  upload:
+    dir: D:/Development/IdeaProject/cloud-mall-practice/cloud-mall-category-product/src/main/resources/static/images/
 
-  sensitive-headers:
-  host:
-    socket-timeout-millis: 15000

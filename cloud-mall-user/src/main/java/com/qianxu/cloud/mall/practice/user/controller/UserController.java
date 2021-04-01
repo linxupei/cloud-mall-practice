@@ -70,7 +70,7 @@ public class UserController {
     }
 
     @ApiOperation("用户更新签名")
-    @PostMapping({"/user/update"})
+    @PostMapping({"/update"})
     @ResponseBody
     public ApiRestResponse updateUserInfo(HttpSession session, @RequestParam String signature) throws QianxuMallException {
         User currentUser = (User) session.getAttribute(Constant.QIANXU_MALL_USER);
@@ -85,7 +85,7 @@ public class UserController {
     }
 
     @ApiOperation("用户注销")
-    @PostMapping({"/user/logout"})
+    @PostMapping({"/logout"})
     @ResponseBody
     public ApiRestResponse Logout(HttpSession session) {
         session.removeAttribute(Constant.QIANXU_MALL_USER);
@@ -120,7 +120,7 @@ public class UserController {
      * @return 一个布尔值
      */
     @ApiOperation("校验是否是管理员")
-    @GetMapping("/checkAdminRole")
+    @PostMapping(value = "/checkAdminRole")
     @ResponseBody
     public Boolean checkAdminRole(@RequestBody User user) {
         return userService.checkAdminRole(user);

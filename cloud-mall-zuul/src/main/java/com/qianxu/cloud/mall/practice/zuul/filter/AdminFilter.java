@@ -54,7 +54,7 @@ public class AdminFilter extends ZuulFilter {
         HttpServletRequest request = currentContext.getRequest();
         HttpSession session = request.getSession();
         User currentUser = (User) session.getAttribute(Constant.QIANXU_MALL_USER);
-        if (currentUser != null) {
+        if (currentUser == null) {
             currentContext.setSendZuulResponse(false);
             currentContext.setResponseBody("{\n" +
                     "    \"status\": 10010,\n" +
@@ -65,7 +65,10 @@ public class AdminFilter extends ZuulFilter {
             return null;
         }
 
-        Boolean adminRole = userFeignClient.checkAdminRole(currentUser);
+        Boolean adminRole = true;
+        System.out.println("11111111: " + userFeignClient.checkAdminRole(currentUser));
+
+
         if (!adminRole) {
             currentContext.setSendZuulResponse(false);
             currentContext.setResponseBody("{\n" +

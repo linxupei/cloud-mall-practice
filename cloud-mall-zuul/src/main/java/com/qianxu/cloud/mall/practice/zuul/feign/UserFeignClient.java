@@ -2,7 +2,7 @@ package com.qianxu.cloud.mall.practice.zuul.feign;
 
 import com.qianxu.cloud.mall.practice.user.model.pojo.User;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
@@ -19,6 +19,6 @@ public interface UserFeignClient {
      * @param user 接收校验的用户
      * @return 校验结果
      */
-    @GetMapping("/checkAdminRole")
+    @PostMapping(value = "/checkAdminRole")
     public Boolean checkAdminRole(@RequestBody User user);
 }

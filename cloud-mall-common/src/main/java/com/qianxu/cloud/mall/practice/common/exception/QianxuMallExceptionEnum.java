@@ -52,6 +52,22 @@ public enum QianxuMallExceptionEnum {
      */
     NEED_ADMIN(10011, "需要管理员权限"),
     /**
+     * 数据库添加数据失败
+     */
+    CREATE_FAILED(10012, "创建失败"),
+    /**
+     * 数据库删除数据失败
+     */
+    DELETE_FAILED(10013, "删除失败"),
+    /**
+     * 创建文件夹失败
+     */
+    MKDIR_FAILED(10014, "创建文件夹失败"),
+    /**
+     * 创建文件夹失败
+     */
+    UPLOAD_FAILED(10015, "上传失败"),
+    /**
      * 系统错误
      */
     SYSTEM_ERROR(20000, "系统异常");

@@ -49,7 +49,7 @@ public class UserFilter extends ZuulFilter {
         HttpServletRequest request = currentContext.getRequest();
         HttpSession session = request.getSession();
         User currentUser = (User) session.getAttribute(Constant.QIANXU_MALL_USER);
-        if (currentUser != null) {
+        if (currentUser == null) {
             currentContext.setSendZuulResponse(false);
             currentContext.setResponseBody("{\n" +
                     "    \"status\": 10010,\n" +
