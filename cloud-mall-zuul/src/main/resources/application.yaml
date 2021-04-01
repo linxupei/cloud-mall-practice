@@ -1,0 +1,41 @@
+
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    name: qianxu_mall_datasource
+    password: ooOO_000000
+    url: jdbc:mysql://47.111.14.150:3306/qianxu_mall?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&userSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+  application:
+    name: cloud-mall-zuul
+  redis:
+    database: 0
+    host: 47.111.14.150
+    password: oo000000
+    port: 6379
+  session:
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+logging:
+  pattern:
+    console: '%clr(%d{${LOG_DATEFORMAT_PATTERN:HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:-}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:}){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
+
+server:
+  port: 8083
+
+zuul:
+  prefix: /
+  routes:
+    cloud-mall-user:
+      path: /user/**
+      service-id: cloud-mall-user
+  sensitive-headers:
+  host:
+    socket-timeout-millis: 15000

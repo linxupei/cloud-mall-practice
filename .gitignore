@@ -1,0 +1,5 @@
+# Project exclude paths
+/cloud-mall-common/target/
+/cloud-mall-eureka-server/target/
+/cloud-mall-user/target/
+/cloud-mall-zuul/target/
