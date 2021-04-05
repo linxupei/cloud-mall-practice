@@ -65,10 +65,7 @@ public class AdminFilter extends ZuulFilter {
             return null;
         }
 
-        Boolean adminRole = true;
-        System.out.println("11111111: " + userFeignClient.checkAdminRole(currentUser));
-
-
+        Boolean adminRole = userFeignClient.checkAdminRole(currentUser);
         if (!adminRole) {
             currentContext.setSendZuulResponse(false);
             currentContext.setResponseBody("{\n" +

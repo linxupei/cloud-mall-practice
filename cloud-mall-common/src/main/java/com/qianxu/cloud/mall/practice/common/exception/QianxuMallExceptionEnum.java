@@ -68,6 +68,30 @@ public enum QianxuMallExceptionEnum {
      */
     UPLOAD_FAILED(10015, "上传失败"),
     /**
+     * 商品已经下架
+     */
+    NOT_SALE(10016, "商品不在销售期"),
+    /**
+     * 商品库存不足
+     */
+    NOT_ENOUGH(10017, "商品库存不足"),
+    /**
+     * 购物车为空
+     */
+    CART_EMPTY(10018, "购物车为空"),
+    /**
+     * 订单不存在
+     */
+    NO_ORDER(10019, "订单不存在"),
+    /**
+     * 非所属订单
+     */
+    NOT_YOUR_ORDER(10020, "非所属订单"),
+    /**
+     * 订单状态错误
+     */
+    WRONG_ORDER_STATUS(10021, "订单状态错误"),
+    /**
      * 系统错误
      */
     SYSTEM_ERROR(20000, "系统异常");

@@ -18,6 +18,7 @@ spring:
     port: 6379
   session:
     store-type: redis
+    timeout: 120
 eureka:
   client:
     service-url:

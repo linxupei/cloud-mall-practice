@@ -7,7 +7,7 @@ import com.qianxu.cloud.mall.practice.common.exception.QianxuMallExceptionEnum;
 import com.qianxu.cloud.mall.practice.user.model.pojo.User;
 import com.qianxu.cloud.mall.practice.user.service.UserService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +22,9 @@ import javax.servlet.http.HttpSession;
  * 用户控制器
  */
 @Controller
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping({"/personal_page"})
     @ResponseBody
@@ -66,6 +66,10 @@ public class UserController {
         User user = userService.login(userName, password);
         user.setPassword(null);
         session.setAttribute(Constant.QIANXU_MALL_USER, user);
+        User currentUser = (User) session.getAttribute(Constant.QIANXU_MALL_USER);
+        if (currentUser == null) {
+            throw new QianxuMallException(QianxuMallExceptionEnum.NEED_LOGIN);
+        }
         return ApiRestResponse.success(user);
     }
 
@@ -124,5 +128,21 @@ public class UserController {
     @ResponseBody
     public Boolean checkAdminRole(@RequestBody User user) {
         return userService.checkAdminRole(user);
+    }
+
+    /**
+     * 获取当前用户
+     * @param session session
+     * @return 当前用户
+     */
+    @ApiOperation("获取当前用户")
+    @GetMapping(value = "/getUser")
+    @ResponseBody
+    public User getUser(HttpSession session) {
+        User currentUser = (User) session.getAttribute(Constant.QIANXU_MALL_USER);
+        if (currentUser == null) {
+            throw new QianxuMallException(QianxuMallExceptionEnum.NEED_LOGIN);
+        }
+        return currentUser;
     }
 }
